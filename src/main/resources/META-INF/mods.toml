@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[39,)"
+license="All rights reserved"
+
+[[mods]]
+modId="vanilla_improvements"
+version="${file.jarVersion}"
+displayName="Tim's Vanilla Improvements"
+logoFile="vanilla_improvements_logo.png"
+credits="Created by Pseudonym_Tim"
+#authors="Pseudonym_Tim"
+description='''
+Adds various improvements and changes to the vanilla game!
+'''
+
+[[dependencies.vanilla_improvements]]
+    modId="forge"
+    mandatory=true
+    versionRange="[39,)"
+    ordering="NONE"
+    side="BOTH"
+    
+[[dependencies.vanilla_improvements]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.1,1.19)"
+    ordering="NONE"
+    side="BOTH"
