@@ -1,0 +1,11 @@
+=====
+FIXES:
+=====
+
+* Fixed broken directional camera damage tilt
+
+======================
+IMPROVEMENTS/CHANGES:
+======================
+
+* Tweaked the side textures of grass blocks
