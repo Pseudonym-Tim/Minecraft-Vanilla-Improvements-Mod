@@ -1,5 +1,8 @@
 package com.pseudotim.vanilla_improvements;
 
+import com.pseudotim.vanilla_improvements.handler.EventHandler;
+import com.pseudotim.vanilla_improvements.handler.PacketHandler;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 

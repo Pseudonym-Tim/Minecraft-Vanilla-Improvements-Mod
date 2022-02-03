@@ -1,4 +1,6 @@
-package com.pseudotim.vanilla_improvements;
+package com.pseudotim.vanilla_improvements.handler;
+
+import com.pseudotim.vanilla_improvements.message.UpdateAttackYawMessage;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -14,21 +16,24 @@ public class EventHandler
 		// If the living entity that was knocked back was the player...
 		if(event.getEntityLiving() instanceof Player)
 		{
-			Player player = (Player)event.getEntityLiving();
+			doPlayerDamageTilt((Player)event.getEntityLiving()); // Do player camera damage tilt...
+		}
+	}
+	
+	private void doPlayerDamageTilt(Player player)
+	{
+		// We only want this code to run server-side!
+		if(player.level.isClientSide) { return; }
+		
+		// Grab server player...
+		if(player instanceof ServerPlayer)
+		{
+			ServerPlayer serverPlayer = (ServerPlayer)player;
 			
-			// We only want this code to run server-side!
-			if(player.level.isClientSide) { return; }
+			if(!canSendPacket(serverPlayer)) { return; } // Piss off if we can't send the packet...
 			
-			// Grab server player...
-			if(player instanceof ServerPlayer)
-			{
-				ServerPlayer serverPlayer = (ServerPlayer)player;
-				
-				if(!canSendPacket(serverPlayer)) { return; } // Piss off if we can't send the packet...
-				
-				// Tell the player client to update their attack yaw...
-				PacketHandler.instance.sendTo(new MessageUpdateAttackYaw(player), serverPlayer.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
-			}
+			// Tell the player client to update their attack yaw...
+			PacketHandler.instance.sendTo(new UpdateAttackYawMessage(player), serverPlayer.connection.connection, NetworkDirection.PLAY_TO_CLIENT);
 		}
 	}
 	

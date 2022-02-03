@@ -1,4 +1,7 @@
-package com.pseudotim.vanilla_improvements;
+package com.pseudotim.vanilla_improvements.handler;
+
+import com.pseudotim.vanilla_improvements.VanillaImprovements;
+import com.pseudotim.vanilla_improvements.message.UpdateAttackYawMessage;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
@@ -8,7 +11,7 @@ public class PacketHandler
 {
 	private static final String PROTOCOL_VER = "1";
 	
-	public static SimpleChannel instance;
+	public static SimpleChannel instance = getChannelInstance();
 	
 	private static SimpleChannel getChannelInstance()
 	{
@@ -19,12 +22,7 @@ public class PacketHandler
 	
 	public static void init()
 	{
-		// Initialize the instance...
-		instance = getChannelInstance();
-		
-		System.out.println("Init packet handler!");
-		
 		// Register MessageUpdateAttackYaw message...
-		instance.registerMessage(0, MessageUpdateAttackYaw.class, MessageUpdateAttackYaw::encode, MessageUpdateAttackYaw::decode, MessageUpdateAttackYaw::handle);
+		instance.registerMessage(0, UpdateAttackYawMessage.class, UpdateAttackYawMessage::encode, UpdateAttackYawMessage::decode, UpdateAttackYawMessage::handle);
 	}
 }
