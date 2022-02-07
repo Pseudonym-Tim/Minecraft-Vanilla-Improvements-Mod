@@ -1,6 +1,6 @@
-package com.pseudotim.vanilla_improvements.handler;
+package com.pseudotim.vanilla_improvements.handlers;
 
-import com.pseudotim.vanilla_improvements.message.UpdateAttackYawMessage;
+import com.pseudotim.vanilla_improvements.messages.UpdateAttackYawMessage;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;

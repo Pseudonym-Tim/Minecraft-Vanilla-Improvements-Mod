@@ -5,12 +5,15 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+
+        classpath 'org.spongepowered:mixingradle:0.7.+'
     }
 }
 
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = '1.0'
 group = 'com.pseudotim.vanilla_improvements'
@@ -76,6 +79,17 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.1-39.0.63'
+    
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin
+{
+	add sourceSets.main, 'vanilla_improvements.mixins.refmap.json'
+    config 'vanilla_improvements.mixins.json'
+    
+    debug.verbose = true
+    debug.export = true
 }
 
 jar {

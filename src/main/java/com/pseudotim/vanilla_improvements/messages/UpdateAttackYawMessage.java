@@ -1,4 +1,4 @@
-package com.pseudotim.vanilla_improvements.message;
+package com.pseudotim.vanilla_improvements.messages;
 
 import java.util.function.Supplier;
 
